@@ -18,16 +18,24 @@
 */
 #include <stdio.h>
 
-void bubble_sort_noflag(int record[], int n) {
+void bubble_sort_noflag(int record[], int n, int type) {
     printf("##### Bubble sort with no flag #####\n");
     int i, j, temp;
     for (i = 0; i < (n - 1); i++) {
         printf("%d loop: ", (i + 1));
         for (j = 0; j < ((n - 1) - i); j++) {
-            if (record[j] > record[j + 1]) {
-                temp = record[j];
-                record[j] = record[j + 1];
-                record[j + 1] = temp;
+            if (type == 0) {
+                if (record[j] > record[j + 1]) {
+                    temp = record[j];
+                    record[j] = record[j + 1];
+                    record[j + 1] = temp;
+                }
+            } else if (type == 1) {
+                if (record[j] < record[j + 1]) {
+                    temp = record[j];
+                    record[j] = record[j + 1];
+                    record[j + 1] = temp;
+                }
             }
         }
         for (int i = 0; i < 5; i++) {
@@ -44,7 +52,7 @@ void bubble_sort_noflag(int record[], int n) {
     printf("####################################\n");
 }
 
-void bubble_sort_flag(int record[], int n) {
+void bubble_sort_flag(int record[], int n, int type) {
     printf("##### Bubble sort with no flag #####\n");
     int i = 0, j, flag, temp;
     
@@ -53,11 +61,20 @@ void bubble_sort_flag(int record[], int n) {
         printf("%d loop: ", (i + 1));
         flag = 0;
         for (j = 0; j < ((n - 1) - i); j++) {
-            if (record[j] > record[j + 1]) {
-                temp = record[j];
-                record[j] = record[j + 1];
-                record[j + 1] = temp;
-                flag = 1;
+            if (type == 0) {
+                if (record[j] > record[j + 1]) {
+                    temp = record[j];
+                    record[j] = record[j + 1];
+                    record[j + 1] = temp;
+                    flag = 1;
+                }
+            } else if (type == 1) {
+                if (record[j] < record[j + 1]) {
+                    temp = record[j];
+                    record[j] = record[j + 1];
+                    record[j + 1] = temp;
+                    flag = 1;
+                }
             }
         }
         for (int i = 0; i < 5; i++) {
@@ -76,13 +93,15 @@ void bubble_sort_flag(int record[], int n) {
 }
 
 int main(int argc, const char * argv[]) {
+    int sortType = 1;   // Acending: 0, Decending: 1
+    
     int record1[5] = {9, 11, 4, 7, 8};
     printf("Initial Records: ");
     for (int i = 0; i < 5; i++) {
         printf("%d ", record1[i]);
     }
     printf("\n");
-    bubble_sort_noflag(record1, sizeof(record1) / 4);
+    bubble_sort_noflag(record1, sizeof(record1) / 4, sortType);
     printf("\n");
     
     int record2[5] = {9, 11, 4, 7, 8};
@@ -91,7 +110,7 @@ int main(int argc, const char * argv[]) {
         printf("%d ", record2[i]);
     }
     printf("\n");
-    bubble_sort_flag(record2, sizeof(record2) / 4);
+    bubble_sort_flag(record2, sizeof(record2) / 4, sortType);
     
     return 0;
 }
