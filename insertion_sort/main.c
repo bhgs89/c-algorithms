@@ -1,13 +1,14 @@
 /*
  Insertion Sort
- */
+*/
 
 #include <stdio.h>
 
 void insertion_sort(int record[], int n) {
     printf("##### Insertion sort #####\n");
     int i, j, temp;
-    for (i = 1; i < n - 1; i++) {
+    for (i = 1; i <= n - 1; i++) {
+        printf("%d loop: ", (i));
         temp = record[i];
         j = i - 1;
         while (j >= 0 && (temp < record[j])) {
@@ -15,6 +16,11 @@ void insertion_sort(int record[], int n) {
             --j;
         }
         record[j + 1] = temp;
+        
+        for (int i = 0; i < 5; i++) {
+            printf("%d ", record[i]);
+        }
+        printf("\n");
     }
     
     printf("Result: ");
