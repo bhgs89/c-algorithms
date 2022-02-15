@@ -1,5 +1,11 @@
 /*
  Selection Sort
+ - Internal Sort: 정렬되는 자료의 개수가 적어서 자료를 주기억 장치에 모두 적재시켜 놓고 정렬
+ - Process
+ - 수행 시간:
+    최악 - O(n^2)
+    최소 - O(n)
+    1 + 2 + ... + (n - 1) =~ n(n - 1) / 2 =~ n^2 / 2 =~ n^2
 */
 
 #include <stdio.h>
